@@ -9,12 +9,12 @@ namespace Game
     {
         protected bool _isEnabled;
 
-        public void Enable()
+        public virtual void Enable()
         {
             _isEnabled = true;
         }
 
-        public void Disable()
+        public virtual void Disable()
         {
             _isEnabled = false;
         }

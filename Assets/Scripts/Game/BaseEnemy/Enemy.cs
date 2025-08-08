@@ -30,5 +30,10 @@ namespace Game.BaseEnemy
         {
             
         }
+
+        public void TakeDamage(int damage)
+        {
+            _unit.TakeDamage(damage);
+        }
     }
 }

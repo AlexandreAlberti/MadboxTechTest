@@ -40,5 +40,10 @@ namespace Game.BaseUnit
             _unitVisuals.PlayDieAnimation();
             OnUnitDeath.Invoke();
         }
+
+        public void TakeDamage(int damage)
+        {
+            _unitHealth.TakeDamage(damage);
+        }
     }
 }
