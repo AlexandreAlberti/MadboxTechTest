@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Game.BaseEnemy;
 using Game.BaseUnit;
+using UnityEngine;
 
 namespace Game.Detector
 {
@@ -8,8 +9,9 @@ namespace Game.Detector
     {
         private float _detectionDistance;
 
-        public void Initialize(float detectionDistance)
+        public void Initialize(Transform detectorCenterPosition, float detectionDistance)
         {
+            base.Initialize(detectorCenterPosition);
             _detectionDistance = detectionDistance;
         }
         

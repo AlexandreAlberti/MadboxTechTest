@@ -50,5 +50,15 @@ namespace Game.BaseUnit
         {
             _unitVisuals.PlayAttackAnimation(transform.forward, directionToEnemy);
         }
+
+        public void PlayMoveAnimation()
+        {
+            _unitVisuals.PlayMoveAnimation();
+        }
+
+        public void PlayIdleAnimation()
+        {
+            _unitVisuals.PlayIdleAnimation();
+        }
     }
 }

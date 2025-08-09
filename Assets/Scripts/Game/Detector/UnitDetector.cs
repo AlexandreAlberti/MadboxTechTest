@@ -11,14 +11,12 @@ namespace Game.Detector
         private Transform _detectorCenterPosition;
         private float _detectionTimer;
         protected Unit _closestUnit;
-        private bool _isHumanPlayer;
         private RaycastHit[] _raycastHits;
 
-        public void Initialize(bool isHumanPlayer, Transform detectorCenterPosition)
+        public void Initialize(Transform detectorCenterPosition)
         {
             _raycastHits = new RaycastHit[1];
             _closestUnit = null;
-            _isHumanPlayer = isHumanPlayer;
             _detectorCenterPosition = detectorCenterPosition;
             Enable();
         }
@@ -77,12 +75,7 @@ namespace Game.Detector
             {
                 _closestUnit = newClosestUnit;
                 _closestUnit.OnUnitDeath += Unit_OnDead;
-
-                if (_isHumanPlayer)
-                {
-                    TargetUnit();
-                }
-
+                TargetUnit();
             }
         }
 

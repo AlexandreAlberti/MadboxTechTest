@@ -1,3 +1,4 @@
+using System;
 using Game.Input;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ namespace Game.BaseHero
         [SerializeField] private float _movementSpeed;
         
         private bool _isMoving;
+
+        public Action OnMovementStart;
+        public Action OnMovementEnd;
 
         public override void Enable()
         {
@@ -32,11 +36,13 @@ namespace Game.BaseHero
         private void TouchInputManager_OnDragStarted()
         {
             _isMoving = true;
+            OnMovementStart?.Invoke();
         }
 
         private void TouchInputManager_OnDragStopped()
         {
             _isMoving = false;
+            OnMovementEnd?.Invoke();
         }
 
         private void TouchInputManager_OnDragVector(Vector2 input)
