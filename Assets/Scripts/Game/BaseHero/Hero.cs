@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using Game.BaseUnit;
-using Game.Input;
 
 namespace Game.BaseHero
 {
@@ -39,9 +37,9 @@ namespace Game.BaseHero
             _heroMovement.Enable();
         }
 
-        private void Unit_OnUnitDeath()
+        private void Unit_OnUnitDeath(Unit unit)
         {
-            // Not Implementing as not expected to receive any event here
+            _unit.OnUnitDeath += Unit_OnUnitDeath;
         }
 
         private void Unit_OnUnitDamage()
@@ -66,5 +64,9 @@ namespace Game.BaseHero
             _weapons[indexToUse].SetActive(true);
         }
         
+        protected void FaceToEnemyDirection(Vector3 directionToEnemy)
+        {
+            _unit.PlayAttackAnimation(directionToEnemy);
+        }
     }
 }

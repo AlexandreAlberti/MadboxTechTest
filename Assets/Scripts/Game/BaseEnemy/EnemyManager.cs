@@ -97,5 +97,10 @@ namespace Game.BaseEnemy
             _enemyList.Remove(enemy);
             ObjectPool.Instance.Release(enemy.GetEnemyPrefab().gameObject, enemy.gameObject);
         }
+
+        public List<Enemy> GetEnemies()
+        {
+            return _enemyList;
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Game.BaseUnit
         private UnitVisuals _unitVisuals;
 
         public Action OnUnitDamage;
-        public Action OnUnitDeath;
+        public Action<Unit> OnUnitDeath;
 
         private void Awake()
         {
@@ -38,12 +38,17 @@ namespace Game.BaseUnit
         {
             Disable();
             _unitVisuals.PlayDieAnimation();
-            OnUnitDeath.Invoke();
+            OnUnitDeath.Invoke(this);
         }
 
         public void TakeDamage(int damage)
         {
             _unitHealth.TakeDamage(damage);
+        }
+
+        public void PlayAttackAnimation(Vector3 directionToEnemy)
+        {
+            _unitVisuals.PlayAttackAnimation(transform.forward, directionToEnemy);
         }
     }
 }

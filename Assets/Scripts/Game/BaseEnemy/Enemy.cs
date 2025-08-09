@@ -26,8 +26,9 @@ namespace Game.BaseEnemy
             Enable();
         }
 
-        private void Unit_OnUnitDeath()
+        private void Unit_OnUnitDeath(Unit unit)
         {
+            _unit.OnUnitDeath -= Unit_OnUnitDeath;
             OnDead?.Invoke(this);
         }
 
@@ -44,6 +45,21 @@ namespace Game.BaseEnemy
         public Enemy GetEnemyPrefab()
         {
             return _enemyPrefab;
+        }
+
+        public Unit GetUnit()
+        {
+            return _unit;
+        }
+        
+        public void TargetEnemy()
+        {
+            // _enemyVisuals.EnableTargetedMark();
+        }
+
+        public void UnTargetEnemy()
+        {
+            // _enemyVisuals.DisableTargetedMark();
         }
     }
 }
