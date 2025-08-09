@@ -1,8 +1,10 @@
+using UnityEngine;
+
 namespace Game.BaseHero
 {
     public class HeroManager : EnablerMonoBehaviour
     {
-        public static HeroManager Instance;
+        public static HeroManager Instance  { get; private set; }
         
         private Hero _hero;
 
@@ -15,6 +17,11 @@ namespace Game.BaseHero
         {
             _hero = FindObjectOfType<Hero>();
             _hero.Initialize(50);
+        }
+
+        public Vector3 GetHeroPosition()
+        {
+            return _hero.transform.position;
         }
     }
 }
