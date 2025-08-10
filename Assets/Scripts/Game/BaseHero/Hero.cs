@@ -5,17 +5,20 @@ namespace Game.BaseHero
 {
     [RequireComponent(typeof(HeroMeleeAttacker))]
     [RequireComponent(typeof(HeroMovement))]
+    [RequireComponent(typeof(HeroVisuals))]
     [RequireComponent(typeof(Unit))]
     public class Hero : EnablerMonoBehaviour
     {
         private HeroMeleeAttacker _heroMeleeAttacker;
         private HeroMovement _heroMovement;
+        private HeroVisuals _heroVisuals;
         private Unit _unit;
 
         private void Awake()
         {
             _heroMeleeAttacker = GetComponent<HeroMeleeAttacker>();
             _heroMovement = GetComponent<HeroMovement>();
+            _heroVisuals = GetComponent<HeroVisuals>();
             _unit = GetComponent<Unit>();
         }
 
@@ -27,11 +30,12 @@ namespace Game.BaseHero
             _heroMovement.OnMovementStart += OnMovementStart;
             _heroMovement.OnMovementEnd += OnMovementEnd;
             _heroMovement.Enable();
-            _heroMeleeAttacker.Initialize();
             _heroMeleeAttacker.OnAttackPerformed += PlayerMeleeAttacker_OnAttackPerformed;
+            _heroMeleeAttacker.OnWeaponChanged += PlayerMeleeAttacker_OnWeaponChanged;
+            _heroMeleeAttacker.Initialize();
             Enable();
         }
-
+        
         private void OnMovementStart()
         {
             _unit.PlayMoveAnimation();
@@ -47,6 +51,11 @@ namespace Game.BaseHero
             FaceToEnemyDirection(directionToEnemy);
         }
 
+        private void PlayerMeleeAttacker_OnWeaponChanged(float newAttackRangeScaler)
+        {
+            _heroVisuals.IncrementAttackRange(newAttackRangeScaler);
+        }
+
         private void Unit_OnUnitDeath(Unit unit)
         {
             _unit.OnUnitDeath += Unit_OnUnitDeath;
@@ -57,7 +66,7 @@ namespace Game.BaseHero
             // Not Implementing as not expected to receive any event here
         }
         
-        protected void FaceToEnemyDirection(Vector3 directionToEnemy)
+        private void FaceToEnemyDirection(Vector3 directionToEnemy)
         {
             _unit.PlayAttackAnimation(directionToEnemy);
         }

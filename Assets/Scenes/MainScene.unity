@@ -454,22 +454,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
-    - target: {fileID: 6839576609790574855, guid: 774a941b4f671d54ca33fff48d8f85f3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6839576609790574855, guid: 774a941b4f671d54ca33fff48d8f85f3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6839576609790574855, guid: 774a941b4f671d54ca33fff48d8f85f3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6839576609790574855, guid: 774a941b4f671d54ca33fff48d8f85f3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7750951749366509617, guid: 774a941b4f671d54ca33fff48d8f85f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

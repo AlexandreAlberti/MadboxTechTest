@@ -14,20 +14,21 @@ namespace Game.BaseHero
         [SerializeField] private HeroAttackTrigger _heroAttackTrigger;
         [SerializeField] private float _attackingCooldown;
         [SerializeField] private int _attackDamage;
-        [SerializeField] private float _attackRange;
         [SerializeField] private float _attackStartTime;
         [SerializeField] private GameObject[] _weapons;
         [SerializeField] private int[] _weaponsDamages;
+        [SerializeField] private float[] _weaponsScales;
 
-        private const int AttackTriggerFramesToRemainActive = 3;
+        private const int AttackTriggerFramesToRemainActive = 5;
         
         private Hero _hero;
         private HeroMovement _heroMovement;
         private EnemyDetector _enemyDetector;
         private float _attackTimer;
-        private float _initialAttackRange;
+        private float _attackRange;
 
         public Action<Vector3> OnAttackPerformed;
+        public Action<float> OnWeaponChanged;
 
         private void Awake()
         {
@@ -85,11 +86,6 @@ namespace Game.BaseHero
             
             _heroAttackTrigger.Disable();
         }
-
-        public void UpdateAttackRange(float attackRangeModifier)
-        {
-            _heroAttackTrigger.transform.localScale = new Vector3(attackRangeModifier, attackRangeModifier, attackRangeModifier);
-        }
         
         public void ChangeWeapon(int index)
         {
@@ -106,7 +102,10 @@ namespace Game.BaseHero
             }
             
             _weapons[indexToUse].SetActive(true);
+            _attackRange = _weaponsScales[indexToUse];
             _heroAttackTrigger.Initialize(_weaponsDamages[indexToUse]);
+            _heroAttackTrigger.SetScale(_attackRange);
+            OnWeaponChanged?.Invoke(_attackRange * 2);
         }
 
     }
