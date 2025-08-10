@@ -34,7 +34,7 @@ This phase was around 1h 30min. Together with last one, done on Friday Afternoon
 This whole feature development toopk around 5h. Done between Saturday afternoon, Sunday morning and Sunday afternoon.
 
 ### Phase 4 - Landing
-- Final test play on device and polish minor stuff.
+- Final test play on device and polish minor stuff. Device is a low end Huawei P20 Lite (2018).
 - Writing this document.
 Landing took around 1h.
 
@@ -44,16 +44,21 @@ But, as well as I have this trained skill set, I wanted to do thinks that worked
 
 ## Improvements
 Not all managers need to be a MonoBehaviour class. Also not need to be Singletons. I have created task maked as Extra to remove that and make the test be more SOLID like using a ServiceLocator tool like [Reflex Dependency Injection](https://github.com/gustavopsantos/Reflex).
-Also, I would like to test a better approach on how attacking using the onTriggerStay logic works.
+Also, I would like to test a better approach on how attacking using the onTriggerStay logic works. I assume current logic with trigger in sword may work better with the onTriggerEnter, as we enable/disable properly with current coreography. 
 Spawning enemies feels so popping, as I'm used to some great effects, with a bit more time I could recover old assets I have and add them.
+Last but not least, I'd love to add a health bar, on the Unit prefab. I did not add it because I felt it will be a 100% copy of what I have already done in other projects. I used a 2 bar system Green(top)/White(middle) over a dark backgrouind: When damage is received, green bar empties immediately, white bar empties progressive till it's hidden under the green one.
 
 ## Further Development
 I would also like to have time to create a win-lose condition, making enemies to move with [BehaviorTree](https://assetstore.unity.com/packages/tools/behavior-ai/behavior-designer-behavior-trees-for-everyone-15277) and create an XP system for the hero to be able to level up, increasing stats and select some skills.
 Enemies may be able to drop items and hero can collect them.
+Enemies will grow in hp and damage the more time it passes, at spawn time.
+Create More enemies to have more variety.
+Do a more elaborate maps with hazards, like spikes or poison that can hurt or give the hero some status effect, or holes, so only flying units can go over them.
+I feel like a "Fog of war" System, similar to Age of empires one.
 And a long of things to make the test to feel more like Archero.
 
-## Ohter
-As I have some advantage on this specific kind of games, I felt that I must shrink a bit the available time, so I could fit it in 8h instead of 10.
+## Other
+As I have some "advantage" on this specific kind of games, I felt that I must shrink a bit the available time, so I could fit it in 8h instead of 10.
 I'm quite proud of what my team and I did and I suggest to take a look at my other repo called [Planet Royale Repo](https://github.com/AlexandreAlberti/PlanetRoyale) which has a minor bug solved, or download the latest build from the [Google Play Store](https://play.google.com/store/apps/details?id=com.quicksand.planetroyale)
-You can find any other game I participated and released for [QuickSand Games](https://play.google.com/store/apps/dev?id=6383870736725209348) in my CV.
+You can find any other game I participated and released for [QuickSand Games](https://play.google.com/store/apps/dev?id=6383870736725209348) in my CV. The first ones have a Fog of War System, like the mentioned in previous section.
 Thanks a lot for the opportunity to participate in your selection process.
