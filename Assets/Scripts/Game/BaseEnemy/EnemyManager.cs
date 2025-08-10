@@ -95,6 +95,12 @@ namespace Game.BaseEnemy
         {
             enemy.OnDead += Enemy_OnDead;
             _enemyList.Remove(enemy);
+            StartCoroutine(WaitAndReleaseEnemy(enemy));
+        }
+
+        private IEnumerator WaitAndReleaseEnemy(Enemy enemy)
+        {
+            yield return new WaitForSeconds(1.0f);
             ObjectPool.Instance.Release(enemy.GetEnemyPrefab().gameObject, enemy.gameObject);
         }
 

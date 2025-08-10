@@ -3,6 +3,7 @@ using System.Collections;
 using Game.BaseEnemy;
 using Game.Detector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Game.BaseHero
 {
@@ -13,9 +14,11 @@ namespace Game.BaseHero
         [SerializeField] private HeroAttackTrigger _heroAttackTrigger;
         [SerializeField] private float _attackingCooldown;
         [SerializeField] private int _attackDamage;
-        [SerializeField] private int _attackRange;
+        [SerializeField] private float _attackRange;
         [SerializeField] private float _attackStartTime;
-        
+        [SerializeField] private GameObject[] _weapons;
+        [SerializeField] private int[] _weaponsDamages;
+
         private const int AttackTriggerFramesToRemainActive = 3;
         
         private Hero _hero;
@@ -35,8 +38,16 @@ namespace Game.BaseHero
 
         public void Initialize()
         {
+            foreach (GameObject weapon in _weapons)
+            {
+                weapon.SetActive(false);
+            }
+
+            _heroAttackTrigger.Disable();
+            ChangeWeapon(Random.Range(0, _weapons.Length));
             _enemyDetector.Initialize(_hero.transform, _attackRange);
             _attackTimer = _attackingCooldown;
+            Enable();
         }
         
         private void Update()
@@ -79,5 +90,24 @@ namespace Game.BaseHero
         {
             _heroAttackTrigger.transform.localScale = new Vector3(attackRangeModifier, attackRangeModifier, attackRangeModifier);
         }
+        
+        public void ChangeWeapon(int index)
+        {
+            int indexToUse = index;
+            
+            if (index < 0)
+            {
+                indexToUse = 0;
+            }
+
+            if (index >= _weapons.Length)
+            {
+                indexToUse =  _weapons.Length - 1;
+            }
+            
+            _weapons[indexToUse].SetActive(true);
+            _heroAttackTrigger.Initialize(_weaponsDamages[indexToUse]);
+        }
+
     }
 }

@@ -4,7 +4,7 @@ namespace Game.BaseUnit
 {
     public class UnitVisuals : MonoBehaviour
     {
-        private static readonly int ATTACK_ANIMATION = Animator.StringToHash("Damage");
+        private static readonly int ATTACK_ANIMATION = Animator.StringToHash("Attack");
         private static readonly int DAMAGE_ANIMATION = Animator.StringToHash("Damage");
         private static readonly int DIE_ANIMATION = Animator.StringToHash("Die");
         private static readonly int IDLE_ANIMATION = Animator.StringToHash("Idle");
