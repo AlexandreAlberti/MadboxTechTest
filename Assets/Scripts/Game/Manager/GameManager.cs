@@ -1,6 +1,7 @@
 using Game.BaseEnemy;
 using Game.BaseHero;
 using Game.Input;
+using UI;
 using UnityEngine;
 
 namespace Game
@@ -18,6 +19,7 @@ namespace Game
             Joystick.Instance.Enable();
             ObjectPool.Instance.ActivatePooling();
             EnemyManager.Instance.Enable();
+            UIManager.Instance.Initialize();
         }
     }
 }

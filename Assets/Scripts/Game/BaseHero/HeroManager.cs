@@ -23,5 +23,10 @@ namespace Game.BaseHero
         {
             return _hero.transform.position;
         }
+
+        public void ChangeHeroWeapon(int newWeapon)
+        {
+            _hero.ChangeWeapon(newWeapon);
+        }
     }
 }

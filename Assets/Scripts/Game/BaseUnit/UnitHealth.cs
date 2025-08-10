@@ -33,7 +33,7 @@ namespace Game.BaseUnit
                 return;
             }
 
-            if (amount > _currentHealthPoints)
+            if (amount >= _currentHealthPoints)
             {
                 _currentHealthPoints = 0;
                 OnDeath?.Invoke();

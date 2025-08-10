@@ -46,7 +46,6 @@ namespace Game.BaseHero
 
             _heroAttackTrigger.Disable();
             ChangeWeapon(Random.Range(0, _weapons.Length));
-            _enemyDetector.Initialize(_hero.transform, _attackRange);
             _attackTimer = _attackingCooldown;
             Enable();
         }
@@ -105,6 +104,7 @@ namespace Game.BaseHero
             _attackRange = _weaponsScales[indexToUse];
             _heroAttackTrigger.Initialize(_weaponsDamages[indexToUse]);
             _heroAttackTrigger.SetScale(_attackRange);
+            _enemyDetector.Initialize(_hero.transform, _attackRange);
             OnWeaponChanged?.Invoke(_attackRange * 2);
         }
 

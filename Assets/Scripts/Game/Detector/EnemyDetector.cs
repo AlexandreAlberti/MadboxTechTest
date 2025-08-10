@@ -40,11 +40,6 @@ namespace Game.Detector
             return _detectionDistance;
         }
 
-        public void SetDetectionDistance(float detectionDistance)
-        {
-            _detectionDistance = detectionDistance;
-        }
-
         protected override List<Unit> GetUnitsList()
         {
             List<Unit> units = new List<Unit>();

@@ -70,5 +70,10 @@ namespace Game.BaseHero
         {
             _unit.PlayAttackAnimation(directionToEnemy);
         }
+
+        public void ChangeWeapon(int newWeapon)
+        {
+            _heroMeleeAttacker.ChangeWeapon(newWeapon);
+        }
     }
 }
