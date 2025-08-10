@@ -9,7 +9,9 @@ namespace Game.BaseHero
         [SerializeField] private float _movementSpeed;
         
         private bool _isMoving;
+        private float _speedMultiplier;
 
+        public Action OnMoved;
         public Action OnMovementStart;
         public Action OnMovementEnd;
 
@@ -60,10 +62,15 @@ namespace Game.BaseHero
             }
 
             Vector3 movementDirection = new Vector3(input.x, 0.0f, input.y);
-            float moveAmount = _movementSpeed * Time.deltaTime;
+            float moveAmount = _movementSpeed * _speedMultiplier * Time.deltaTime;
             transform.position += movementDirection * moveAmount;
             transform.forward = movementDirection;
+            OnMoved?.Invoke();
         }
-            
+
+        public void ChangeSpeedMultiplier(float speedMultiplier)
+        {
+            _speedMultiplier = speedMultiplier;
+        }
     }
 }

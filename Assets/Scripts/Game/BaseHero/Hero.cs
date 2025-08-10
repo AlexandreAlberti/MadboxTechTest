@@ -27,6 +27,7 @@ namespace Game.BaseHero
             _unit.Initialize(healthPoints);
             _unit.OnUnitDamage += Unit_OnUnitDamage;
             _unit.OnUnitDeath += Unit_OnUnitDeath;
+            _heroMovement.OnMoved += OnMoved;
             _heroMovement.OnMovementStart += OnMovementStart;
             _heroMovement.OnMovementEnd += OnMovementEnd;
             _heroMovement.Enable();
@@ -36,6 +37,12 @@ namespace Game.BaseHero
             Enable();
         }
         
+        private void OnMoved()
+        {
+            _unit.ResetFaceToEnemyRotation();
+            _heroMeleeAttacker.ResetFaceToEnemyOrientation();
+        }
+
         private void OnMovementStart()
         {
             _unit.PlayMoveAnimation();
@@ -51,9 +58,11 @@ namespace Game.BaseHero
             FaceToEnemyDirection(directionToEnemy);
         }
 
-        private void PlayerMeleeAttacker_OnWeaponChanged(float newAttackRangeScaler)
+        private void PlayerMeleeAttacker_OnWeaponChanged(float newAttackRangeScaler, float speedMultiplier)
         {
+            _heroMovement.ChangeSpeedMultiplier(speedMultiplier);
             _heroVisuals.IncrementAttackRange(newAttackRangeScaler);
+            _unit.ChangeAnimatorSpeed(speedMultiplier);
         }
 
         private void Unit_OnUnitDeath(Unit unit)

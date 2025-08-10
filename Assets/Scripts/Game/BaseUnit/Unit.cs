@@ -51,6 +51,11 @@ namespace Game.BaseUnit
             _unitVisuals.PlayAttackAnimation(transform.forward, directionToEnemy);
         }
 
+        public void ResetFaceToEnemyRotation()
+        {
+            _unitVisuals.ResetLocalRotation();
+        }
+
         public void PlayMoveAnimation()
         {
             _unitVisuals.PlayMoveAnimation();
@@ -59,6 +64,11 @@ namespace Game.BaseUnit
         public void PlayIdleAnimation()
         {
             _unitVisuals.PlayIdleAnimation();
+        }
+
+        public void ChangeAnimatorSpeed(float speedMultiplier)
+        {
+            _unitVisuals.ChangeAnimatorSpeed(speedMultiplier);
         }
     }
 }

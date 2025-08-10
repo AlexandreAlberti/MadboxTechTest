@@ -39,5 +39,15 @@ namespace Game.BaseUnit
             _visuals.localRotation = Quaternion.AngleAxis(signedAngle, Vector3.up);
             _animator.Play(ATTACK_ANIMATION);
         }
+
+        public void ResetLocalRotation()
+        {
+            _visuals.localRotation = Quaternion.identity;
+        }
+
+        public void ChangeAnimatorSpeed(float speedMultiplier)
+        {
+            _animator.speed = speedMultiplier;
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace Game.BaseHero
         [SerializeField] private GameObject[] _weapons;
         [SerializeField] private int[] _weaponsDamages;
         [SerializeField] private float[] _weaponsScales;
+        [SerializeField] private float[] _weaponsSpeeds;
 
         private const int AttackTriggerFramesToRemainActive = 5;
         
@@ -26,9 +27,10 @@ namespace Game.BaseHero
         private EnemyDetector _enemyDetector;
         private float _attackTimer;
         private float _attackRange;
+        private float _speedMultiplier;
 
         public Action<Vector3> OnAttackPerformed;
-        public Action<float> OnWeaponChanged;
+        public Action<float, float> OnWeaponChanged;
 
         private void Awake()
         {
@@ -57,8 +59,7 @@ namespace Game.BaseHero
                 return;
             }
             
-            _attackTimer -= Time.deltaTime;
-
+            _attackTimer -= Time.deltaTime * _speedMultiplier;
             Enemy closestEnemy = _enemyDetector.GetClosestEnemy();
             
             if (_attackTimer <= 0.0f && !_heroMovement.IsMoving() && closestEnemy)
@@ -75,7 +76,7 @@ namespace Game.BaseHero
         
         private IEnumerator AttackChoreography()
         {
-            yield return new WaitForSeconds(_attackStartTime);
+            yield return new WaitForSeconds(_attackStartTime / _speedMultiplier);
             _heroAttackTrigger.Enable();
             
             for (int i = 0; i < AttackTriggerFramesToRemainActive; i++)
@@ -102,11 +103,16 @@ namespace Game.BaseHero
             
             _weapons[indexToUse].SetActive(true);
             _attackRange = _weaponsScales[indexToUse];
+            _speedMultiplier = _weaponsSpeeds[indexToUse];
             _heroAttackTrigger.Initialize(_weaponsDamages[indexToUse]);
             _heroAttackTrigger.SetScale(_attackRange);
             _enemyDetector.Initialize(_hero.transform, _attackRange);
-            OnWeaponChanged?.Invoke(_attackRange * 2);
+            OnWeaponChanged?.Invoke(_attackRange * 2, _speedMultiplier);
         }
-
+        
+        public void ResetFaceToEnemyOrientation()
+        {
+            _heroAttackTrigger.transform.localRotation =  Quaternion.identity;
+        }
     }
 }

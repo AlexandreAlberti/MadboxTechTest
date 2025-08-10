@@ -738,17 +738,20 @@ MonoBehaviour:
   _heroAttackTrigger: {fileID: 2065054753073362932}
   _attackingCooldown: 3
   _attackDamage: 25
-  _attackRange: 2.5
   _attackStartTime: 0.5
   _weapons:
   - {fileID: 8524722113514835182}
   - {fileID: 7934655142861765538}
   - {fileID: 8923477640571804837}
-  _weaponsDamages: 1e0000002800000032000000
+  _weaponsDamages: 0d0000001900000032000000
   _weaponsScales:
   - 2.5
   - 3
   - 4
+  _weaponsSpeeds:
+  - 2
+  - 1
+  - 0.5
 --- !u!114 &204373695404061267
 MonoBehaviour:
   m_ObjectHideFlags: 0
