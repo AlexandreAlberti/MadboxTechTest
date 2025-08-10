@@ -38,15 +38,18 @@ SpriteAtlas:
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
     - e02b5a425513c1a4481ea98b6d74b41c: -2413806693520163455
+    - 85e1daa540d83d047808b123cfe89c59: 21300000
     - b72686575cfdbcc4487a9f58097ce943: 21300000
     - 72ca4ddcd839caa43ad07a643530240f: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: -2413806693520163455, guid: e02b5a425513c1a4481ea98b6d74b41c, type: 3}
+  - {fileID: 21300000, guid: 85e1daa540d83d047808b123cfe89c59, type: 3}
   - {fileID: 21300000, guid: b72686575cfdbcc4487a9f58097ce943, type: 3}
   - {fileID: 21300000, guid: 72ca4ddcd839caa43ad07a643530240f, type: 3}
   m_PackedSpriteNamesToIndex:
   - Circle
+  - generic_shape_circle_border_crossCuts_128x128
   - WhiteSquare
   - circle-border-ui-sprite
   m_RenderDataMap: {}

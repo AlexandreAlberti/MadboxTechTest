@@ -5,9 +5,11 @@ using Game.BaseUnit;
 namespace Game.BaseEnemy
 {
     [RequireComponent(typeof(Unit))]
+    [RequireComponent(typeof(EnemyVisuals))]
     public class Enemy : EnablerMonoBehaviour
     {
         private Unit _unit;
+        private EnemyVisuals _enemyVisuals;
         private Enemy _enemyPrefab;
 
         public Action<Enemy> OnDead;
@@ -15,6 +17,7 @@ namespace Game.BaseEnemy
         private void Awake()
         {
             _unit = GetComponent<Unit>();
+            _enemyVisuals = GetComponent<EnemyVisuals>();
         }
 
         public void Initialize(int healthPoints, Enemy enemyPrefab)
@@ -23,6 +26,7 @@ namespace Game.BaseEnemy
             _unit.OnUnitDamage += Unit_OnUnitDamage;
             _unit.OnUnitDeath += Unit_OnUnitDeath;
             _enemyPrefab = enemyPrefab;
+            UnTargetEnemy();
             Enable();
         }
 
@@ -54,12 +58,12 @@ namespace Game.BaseEnemy
         
         public void TargetEnemy()
         {
-            // _enemyVisuals.EnableTargetedMark();
+            _enemyVisuals.EnableTargetedMark();
         }
 
         public void UnTargetEnemy()
         {
-            // _enemyVisuals.DisableTargetedMark();
+            _enemyVisuals.DisableTargetedMark();
         }
     }
 }
