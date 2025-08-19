@@ -67,6 +67,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6926839794853975167, guid: 41e04faa14fb7a34e8b16750ec910fc3, type: 3}
   m_PrefabInstance: {fileID: 79327310225801916}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &7005568931019712515 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6926839794849704639, guid: 41e04faa14fb7a34e8b16750ec910fc3, type: 3}
+  m_PrefabInstance: {fileID: 79327310225801916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1258194035938559120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,6 +215,10 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 7005568931015464643}
+    - target: {fileID: 8571107358303054598, guid: 44e8a018f375072458c84bf9be99c46f, type: 3}
+      propertyPath: _unitRenderers.Array.data[0]
+      value: 
+      objectReference: {fileID: 7005568931019712515}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6061833413550813194, guid: 44e8a018f375072458c84bf9be99c46f, type: 3}

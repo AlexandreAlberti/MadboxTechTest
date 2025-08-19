@@ -13,14 +13,12 @@ namespace Game.BaseHero
         {
             base.Enable();
             _damagedEnemies = new List<Enemy>();
-            gameObject.SetActive(true);
         }
 
         public override void Disable()
         {
             base.Disable();
             _damagedEnemies = new List<Enemy>();
-            gameObject.SetActive(false);
         }
 
         protected override void OnTriggerStay(Collider other)

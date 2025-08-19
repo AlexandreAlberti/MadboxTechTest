@@ -11,7 +11,7 @@ namespace Game.BaseUnit
         private int _maxHealthPoints;
         private int _currentHealthPoints;
 
-        public Action OnDamageReceived;
+        public Action<int,int,int> OnDamageReceived;
         public Action OnDeath;
 
         public void Initialize(int maxPoints)
@@ -42,7 +42,8 @@ namespace Game.BaseUnit
             }
 
             _currentHealthPoints -= amount;
-            OnDamageReceived?.Invoke(); 
+            // int damage, int currentHealth, int maxHealth
+            OnDamageReceived?.Invoke(amount, _currentHealthPoints,  _maxHealthPoints); 
         }
     }
 }

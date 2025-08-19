@@ -20,7 +20,7 @@ namespace Game.BaseHero
         [SerializeField] private float[] _weaponsScales;
         [SerializeField] private float[] _weaponsSpeeds;
 
-        private const int AttackTriggerFramesToRemainActive = 5;
+        private const int AttackTriggerFramesToRemainActive = 10;
         
         private Hero _hero;
         private HeroMovement _heroMovement;
