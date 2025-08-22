@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Game.BaseUnit;
 
@@ -9,6 +10,7 @@ namespace Game.BaseHero
     [RequireComponent(typeof(Unit))]
     public class Hero : EnablerMonoBehaviour
     {
+        public Action OnHeroDeath;
         private HeroMeleeAttacker _heroMeleeAttacker;
         private HeroMovement _heroMovement;
         private HeroVisuals _heroVisuals;
@@ -36,7 +38,12 @@ namespace Game.BaseHero
             _heroMeleeAttacker.Initialize();
             Enable();
         }
-        
+
+        public void Restart(int healthPoints)
+        {
+            _unit.Restart(healthPoints);
+        }
+
         private void OnMoved()
         {
             _unit.ResetFaceToEnemyRotation();
@@ -68,6 +75,7 @@ namespace Game.BaseHero
         private void Unit_OnUnitDeath(Unit unit)
         {
             _unit.OnUnitDeath += Unit_OnUnitDeath;
+            OnHeroDeath?.Invoke();
         }
 
         private void Unit_OnUnitDamage()
@@ -83,6 +91,11 @@ namespace Game.BaseHero
         public void ChangeWeapon(int newWeapon)
         {
             _heroMeleeAttacker.ChangeWeapon(newWeapon);
+        }
+
+        public void KillHero(int unitMaxHealth)
+        {
+            _unit.TakeDamage(unitMaxHealth);
         }
     }
 }

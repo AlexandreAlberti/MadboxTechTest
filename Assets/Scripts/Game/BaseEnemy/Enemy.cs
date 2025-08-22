@@ -23,16 +23,17 @@ namespace Game.BaseEnemy
         public void Initialize(int healthPoints, Enemy enemyPrefab)
         {
             _unit.Initialize(healthPoints);
+            _unit.OnUnitDamage -= Unit_OnUnitDamage;
             _unit.OnUnitDamage += Unit_OnUnitDamage;
+            _unit.OnUnitDeath -= Unit_OnUnitDeath;
             _unit.OnUnitDeath += Unit_OnUnitDeath;
             _enemyPrefab = enemyPrefab;
             UnTargetEnemy();
             Enable();
         }
-
+        
         private void Unit_OnUnitDeath(Unit unit)
         {
-            _unit.OnUnitDeath -= Unit_OnUnitDeath;
             OnDead?.Invoke(this);
         }
 
@@ -43,7 +44,6 @@ namespace Game.BaseEnemy
 
         public void TakeDamage(int damage)
         {
-            Debug.Log($"Enemy is taking damage {damage}");
             _unit.TakeDamage(damage);
         }
 

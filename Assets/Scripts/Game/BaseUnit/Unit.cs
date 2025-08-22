@@ -22,13 +22,24 @@ namespace Game.BaseUnit
         public void Initialize(int healthPoints)
         {
             _unitHealth.Initialize(healthPoints);
+            _unitHealth.OnDamageReceived -= UnitHealth_OnDamageReceived;
             _unitHealth.OnDamageReceived += UnitHealth_OnDamageReceived;
+            _unitHealth.OnDeath -= UnitHealth_OnDeath;
             _unitHealth.OnDeath += UnitHealth_OnDeath;
             _unitVisuals.Initialize(healthPoints);
             _unitVisuals.PlayIdleAnimation();
             Enable();
         }
+        
+        public void Restart(int healthPoints)
+        {
+            _unitHealth.Restart(healthPoints);
+            _unitVisuals.Restart(healthPoints);
+            Enable();
+        }
 
+        
+        
         private void UnitHealth_OnDamageReceived(int damage, int currentHealth, int maxHealth)
         {
             _unitVisuals.EnableDamageFlash();
@@ -41,7 +52,7 @@ namespace Game.BaseUnit
             Disable();
             _unitVisuals.EnableDamageFlash();
             _unitVisuals.PlayDieAnimation();
-            OnUnitDeath.Invoke(this);
+            OnUnitDeath?.Invoke(this);
         }
 
         public void TakeDamage(int damage)
