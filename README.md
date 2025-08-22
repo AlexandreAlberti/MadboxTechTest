@@ -1,5 +1,7 @@
 # MadboxTechTest
-This is the personal explanations on how I did this texh test for applicating into Madbox.
+This is the personal explanations on how I did this tech test for my application into Madbox.
+
+Phase 5 and 6 were added after initial delivery.
 
 ## How I approached this test:
 ### Phase 1 - Set up
@@ -43,29 +45,57 @@ This whole feature development toopk around 5h. Done between Saturday afternoon,
 
 Landing took around 1h.
 
-## Dificulties
+### Phase 5 - Extra time
+ - Added all visual feedback points from Improvements section in Delivered code v1.
+   - Added a tool to check FPS performance and memory usage
+   - Spawn enemies choreography
+   - White frame on hit
+   - Health bar for all units
+   - Damage particles with DamageNumbersPro
+ - Fixed the attacking system to behave properly.
+
+Time spent 2h
+
+### Phase 6 - Additional Features Added
+- Create a Win-Lose condition pair
+  - Amount of bee to kill to win
+  - Time runs out for lose
+- Remote Config through Unity Services to be able to change it with no new builds required
+- Intro choreography 
+- End Screen
+- Buttons for reset/retry in-game and in end screen
+
+Time spent 3h
+
+## Difficulties
 I have worked in Action games like Archero for the last year and a half. I already have a trained expertise in this specific kind of games. Also have developed previously all features in this game, except for weapon selector/weapon change ingame.  
+
 But, as well as I have this trained skill set, I wanted to do thinks that worked well but with limited time, I had decided to go with Singletons instead of using better long-term SOLID DependencyInversion approach, in order to stick to the plan and be able to finish everything on the required time.
 
 ## Improvements
-Not all managers need to be a MonoBehaviour class. Also not need to be Singletons. I have created task maked as Extra to remove that and make the test be more SOLID like using a ServiceLocator tool like [Reflex Dependency Injection](https://github.com/gustavopsantos/Reflex).  
-Also, I would like to test a better approach on how attacking using the onTriggerStay logic works. I assume current logic with trigger in sword may work better with the onTriggerEnter, as we enable/disable properly with current coreography.  
-Spawning enemies feels so popping, as I'm used to some great effects, with a bit more time I could recover old assets I have and add them.  
-I also feel like hitting has not enough feedback, so I would add a white frame (changing material to a full white one) during 0.1s + add the damage using a very helpful tool called [Damage Numbers Pro](https://assetstore.unity.com/packages/2d/gui/damage-numbers-pro-186447)  
-Last but not least, I'd love to add a health bar, on the Unit prefab. I did not add it because I felt it will be a 100% copy of what I have already done in other projects. I used a 2 bar system Green(top)/White(middle) over a dark backgrouind: When damage is received, green bar empties immediately, white bar empties progressive till it's hidden under the green one.
+Also, I would like to:
+- Not all managers need to be a MonoBehaviour class. Also not need to be Singletons. I have created task maked as Extra to remove that and make the test be more SOLID like using a ServiceLocator tool like [Reflex Dependency Injection](https://github.com/gustavopsantos/Reflex).
+- ~~test a better approach on how attacking using the onTriggerStay logic works. I assume current logic with trigger in sword may work better with the onTriggerEnter, as we enable/disable properly with current coreography.~~  
+- ~~Spawning enemies feels so popping, as I'm used to some great effects, with a bit more time I could recover old assets I have and add them.~~  
+- ~~I also feel like hitting has not enough feedback, so I would add a white frame (changing material to a full white one) during 0.1s + add the damage using a very helpful tool called [Damage Numbers Pro](https://assetstore.unity.com/packages/2d/gui/damage-numbers-pro-186447)~~  
+- ~~Last but not least, I'd love to add a health bar, on the Unit prefab. I did not add it because I felt it will be a 100% copy of what I have already done in other projects. I used a 2 bar system Green(top)/White(middle) over a dark backgrouind: When damage is received, green bar empties immediately, white bar empties progressive till it's hidden under the green one.~~~~
 
 
 ## Further Development
-I would also like to have time to create a win-lose condition, making enemies to move with [BehaviorTree](https://assetstore.unity.com/packages/tools/behavior-ai/behavior-designer-behavior-trees-for-everyone-15277) and create an XP system for the hero to be able to level up, increasing stats and select some skills.  
-Enemies may be able to drop items and hero can collect them.  
-Enemies will grow in hp and damage the more time it passes, at spawn time.  
-Create More enemies to have more variety.  
-Do a more elaborate maps with hazards, like spikes or poison that can hurt or give the hero some status effect, or holes, so only flying units can go over them.  
-I feel like a "Fog of war" System, similar to Age of empires one.  
-And a long of things to make the test to feel more like Archero.  
+- ~~I would also like to have time to create a win-lose condition~~. 
+- Regarding Enemies:
+    - Make Enemies randomly move, pursuit and attack the player. So there is a thread to the hero other than time running out. I didn't include it because it may need a lot of readjust to current melee behaviors. In that case, having a melee weapon should be an option.
+        - As a proof of knowledge of this topic, I include some references on next section so you can check.
+    - May be able to drop items (xp/health potions) on death and hero can collect them.
+    - Enemies will grow in hp and damage the more time it passes, at spawn time.
+    - Create More enemies to have more variety.
+- Do a more elaborate maps with hazards, like spikes or poison that can hurt or give the hero some status effect, or holes, so only flying units can go over them.
+- I feel like a "Fog of war" System, similar to Age of empires one, will fit very well.
+- And a long of things to make the test to feel more like Archero.
 
 ## Other
-As I have some "advantage" on this specific kind of games, I felt that I must shrink a bit the available time, so I could fit it in 8h instead of 10.  
 I'm quite proud of what my team and I did and I suggest to take a look at my other repo called [Planet Royale Repo](https://github.com/AlexandreAlberti/PlanetRoyale) which has a minor bug solved, or download the latest build from the [Google Play Store](https://play.google.com/store/apps/details?id=com.quicksand.planetroyale)  
+
 You can find any other game I participated and released for [QuickSand Games](https://play.google.com/store/apps/dev?id=6383870736725209348) in my CV. The first ones have a Fog of War System, like the mentioned in previous section.
+
 Thanks a lot for the opportunity to participate in your selection process.
