@@ -78,7 +78,7 @@ Also, I would like to:
 - ~~test a better approach on how attacking using the onTriggerStay logic works. I assume current logic with trigger in sword may work better with the onTriggerEnter, as we enable/disable properly with current coreography.~~  
 - ~~Spawning enemies feels so popping, as I'm used to some great effects, with a bit more time I could recover old assets I have and add them.~~  
 - ~~I also feel like hitting has not enough feedback, so I would add a white frame (changing material to a full white one) during 0.1s + add the damage using a very helpful tool called [Damage Numbers Pro](https://assetstore.unity.com/packages/2d/gui/damage-numbers-pro-186447)~~  
-- ~~Last but not least, I'd love to add a health bar, on the Unit prefab. I did not add it because I felt it will be a 100% copy of what I have already done in other projects. I used a 2 bar system Green(top)/White(middle) over a dark backgrouind: When damage is received, green bar empties immediately, white bar empties progressive till it's hidden under the green one.~~~~
+- ~~Last but not least, I'd love to add a health bar, on the Unit prefab. I did not add it because I felt it will be a 100% copy of what I have already done in other projects. I used a 2 bar system Green(top)/White(middle) over a dark backgrouind: When damage is received, green bar empties immediately, white bar empties progressive till it's hidden under the green one.~~
 
 
 ## Further Development
